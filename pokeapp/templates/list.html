@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% if pokes.previous != null %}
+		
+	
+    <form action="{% url 'list-view' %}">
+    <input type="hidden" value="{{pokes.previous}}" name='next'>
+    <button class="btn btn-primary my-3" type='submit'>Previous</button>
+    </form>
+    {% else %}
+    <button class="btn btn-primary my-3" disabled>Previous</button>
+    {% endif %}
+    <form action="{% url 'list-view' %}">
+    <input type="hidden" value="{{pokes.next}}" name='next'>
+    <button class="btn btn-primary my-3" type='submit'>Next</button>
+    </form>
+
+	<div class="row">
+	{% for poke in pokes.results %}
+	<div class="col-xl-6 col-lg-6 my-3">
+		<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{poke.name}}</h5>
+    <form action="{% url 'detail-view' %}">
+    <input type="hidden" value="{{poke.url}}" name='detail'>
+    <button class="btn btn-primary" type='submit'>Detail</button>
+    </form>
+  </div>
+</div>
+</div>
+
+
+	{% endfor %}
+	</div>
+
+	{% if pokes.previous != null %}
+		
+	
+    <form action="{% url 'list-view' %}">
+    <input type="hidden" value="{{pokes.previous}}" name='next'>
+    <button class="btn btn-primary  my-3" type='submit'>Previous</button>
+    </form>
+    {% else %}
+    <button class="btn btn-primary  my-3" disabled>Previous</button>
+    {% endif %}
+    <form action="{% url 'list-view' %}">
+    <input type="hidden" value="{{pokes.next}}" name='next'>
+    <button class="btn btn-primary  my-3" type='submit'>Next</button>
+    </form>
+
+
+{% endblock content %}

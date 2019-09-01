@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+
+{% for name in poke_det.forms %}
+<h1 class="mb-5 text-capitalize">{{name.name}}</h1>	
+{% endfor %}
+
+
+
+<p>
+ 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+    Abilities
+  </button>
+</p>
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body">
+<ul>
+{% for ability in poke_det.abilities %}
+<li>
+	{{ability.ability.name}}
+	</li>
+{% endfor %}
+</ul>
+
+  </div>
+</div>
+
+
+
+
+<p>
+ 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+    Height
+  </button>
+</p>
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body">
+  {{poke_det.height}}
+
+  </div>
+</div>
+
+
+
+
+<p>
+ 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Moves
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <ul>
+{% for move in poke_det.moves %}
+	<li>{{move.move.name}}</li>
+{% endfor %}
+</ul>
+
+  </div>
+</div>
+
+
+<p>
+ 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+    Types
+  </button>
+</p>
+<div class="collapse" id="collapseExample2">
+  <div class="card card-body">
+    <ul>
+{% for type in poke_det.types %}
+	<li>{{type.type.name}}</li>
+{% endfor %}
+</ul>
+
+  </div>
+</div>
+{% endblock content %}
